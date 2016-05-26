@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 1025:1025
+            - 8025:8025
+    mailer:
+        build: .
+        environment:
+            - MAILER_SMTP_SERVER_HOST=mailhog
+            - MAILER_SMTP_SERVER_PORT=1025
+            
